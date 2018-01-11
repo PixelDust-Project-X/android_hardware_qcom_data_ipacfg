@@ -19,7 +19,10 @@ LOCAL_SRC_FILES := ipa_nat_drv.c \
 
 
 LOCAL_VENDOR_MODULE := true
-LOCAL_CFLAGS := -DDEBUG -Wall -Werror
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
+LOCAL_CFLAGS := -DDEBUG
+endif
+LOCAL_CFLAGS += -Wall -Werror
 LOCAL_MODULE := libipanat
 LOCAL_MODULE_TAGS := optional
 LOCAL_PRELINK_MODULE := false
